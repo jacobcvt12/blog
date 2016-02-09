@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Parallel Rcpp for MCMC diagnostics"
 date:   2016-02-09 09:32:47 -0500
-categories: Parallel, Gibbs Sampling, Computing
+categories: Parallel, Gibbs Sampling, Computing, Diagnostics, Rcpp
 ---
 
 Many Bayesian diagnostics require multiple chains
