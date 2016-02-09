@@ -4,12 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Graduate student at Johns Hopkins. Interests in Bayesian Statistics and Statistical Computing. 
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+Graduated from Virginia Tech in Mathematics in 2012. Worked as Data Analyst at Deloitte, followed by data scientist at Marriott. Currently pursuing Masters of Science in Epidemiology at Johns Hopkins.
