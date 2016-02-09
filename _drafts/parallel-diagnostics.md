@@ -9,7 +9,7 @@ Many Bayesian diagnostics require multiple chains to assess convergence. A commo
 
 For a given parameter, we calulate the variance by parameter
 
-$$s_j^2 = \frac{1}{n-1}\sum_i^n(\theta_{ij}-\bar{theta}_j)^2$$
+$$s_j^2 = \frac{1}{n-1}\sum_i^n(\theta_{ij}-\bar{\theta}_j)^2$$
 
 {% highlight R %}
 print(2+2)
