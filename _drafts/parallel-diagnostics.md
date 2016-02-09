@@ -13,4 +13,4 @@ print(2+2)
 
 Check out the [Parallel Example package][RcppParallel] for implementation details.
 
-[RcppParall]: https://github.com/jacobcvt12/RcppParallelExample
+[RcppParallel]: https://github.com/jacobcvt12/RcppParallelExample
