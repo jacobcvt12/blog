@@ -11,6 +11,8 @@ Many Bayesian diagnostics require multiple chains
 print(2+2)
 {% endhighlight %}
 
+$$\frac{x^2}{4}$$
+
 Check out the [Parallel Example package][RcppParallel] for implementation details.
 
 [RcppParallel]: https://github.com/jacobcvt12/RcppParallelExample
