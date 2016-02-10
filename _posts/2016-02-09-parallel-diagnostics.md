@@ -19,7 +19,7 @@ The between chain variance is calculated as
 
 $$B=\frac{m}{n-1}\sum_1^m (\bar{\theta}_j-\bar{\bar{\theta}})^2$$
 
-where $$\bar{\bar{\theta}}=\frac{1}{m}\sum_i^m \bar{\theta}_j
+where $$\bar{\bar{\theta}}=\frac{1}{m}\sum_i^m \bar{\theta}_j$$
 
 Or more simply is the "mean of means."
 
