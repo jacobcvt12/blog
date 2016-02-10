@@ -65,6 +65,65 @@ Check out the [Parallel Example package][RcppParallel] for implementation detail
 
 Since this diagnostic requires multiple chains, a typical solution is to run the chains in parallel. Since sampling MCMC is computationally intensive, we typically write sampler in compiled language. Here I use C++ in combination with the Rcpp {% cite eddelbuettel2011 %} library for the compiled language and Open-MP for parallelization.
 
+{% highlight C++ linenos %}
+#include <RcppArmadillo.h>
+#include <cmath>
+#include <omp.h>
+
+// [[Rcpp::export]]
+Rcpp::List normal_gibbs(arma::vec data, double mu0, double t20, double nu0, double s20, 
+                        int burnin=1000, int iter=1000, int chains=1) {
+    // initialize parameters
+    double data_mean = arma::mean(data);
+    double data_var = arma::var(data);
+    int n = data.size();
+    double mu = data_mean;
+    double s2 = data_var;
+
+    // initialize chains
+    arma::mat mu_chain(iter, chains);
+    arma::mat s2_chain(iter, chains);
+
+    #pragma omp parallel for num_threads(chains)
+    for (int chain = 0; chain < chains; ++chain) {
+        // burnin
+        for (int b = 0; b < burnin; ++b) {
+            // update mu
+            double mu_n = (mu0 / t20 + n * data_mean * (1. / s2)) / (1. / t20 + n * (1 / s2));
+            double t2_n = 1 / (1 / t20 + n / (s2));
+            mu = arma::conv_to<double>::from(rnormArma(1, mu_n, t2_n));
+
+            // update s2
+            double nu_n = nu0 + n;
+            double s2_n = (nu0 * s20 + (n-1) * data_var + n * pow(data_mean - mu, 2)) / nu_n;
+            s2 = arma::conv_to<double>::from(arma::randg(1, arma::distr_param(nu_n / 2., 2. / (nu_n *s2_n))));
+        }
+
+        // burnin
+        for (int s = 0; s < iter; ++s) {
+            // update mu
+            double mu_n = (mu0 / t20 + n * data_mean * (1. / s2)) / (1. / t20 + n * (1 / s2));
+            double t2_n = 1 / (1 / t20 + n / (s2));
+            mu = arma::conv_to<double>::from(rnormArma(1, mu_n, t2_n));
+
+            // update s2
+            double nu_n = nu0 + n;
+            double s2_n = (nu0 * s20 + (n-1) * data_var + n * pow(data_mean - mu, 2)) / nu_n;
+            s2 = 1. / arma::conv_to<double>::from(arma::randg(1, arma::distr_param(nu_n / 2., 2. / (nu_n *s2_n))));
+
+            // store values
+            mu_chain(s, chain) = mu;
+            s2_chain(s, chain) = s2;
+        }
+    }
+
+
+    return Rcpp::List::create(Rcpp::Named("mu")=mu_chain,
+                              Rcpp::Named("s2")=s2_chain);
+}
+
+{% endhighlight %}
+
 # References
 
 {% bibliography --cited %}
