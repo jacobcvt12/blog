@@ -5,7 +5,7 @@ date:   2016-02-09 17:32:47 -0500
 categories: Parallel, Gibbs Sampling, Computing, Diagnostics, Rcpp
 ---
 
-Many Bayesian diagnostics require multiple chains to assess convergence. A common estimator is the Gelman-Rubin diagnostic. Note that this diagnostic requires that the parameter in question must be *approximately normal*. This method assesses convergence by parameter and method of estiamtion (Gibbs, Metropolis-Hastings, etc) does not matter.
+Many Bayesian diagnostics require multiple chains to assess convergence. A common estimator is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. This method assesses convergence by parameter and method of estiamtion (Gibbs, Metropolis-Hastings, etc) does not matter.
 
 For a given parameter, we calulate the variance by parameter (MCMC iteration *i* and chain *j*).
 
@@ -51,5 +51,7 @@ gelman.rubin <- function(param) {
 {% endhighlight %}
 
 Check out the [Parallel Example package][RcppParallel] for implementation details.
+
+{% papers %}
 
 [RcppParallel]: https://github.com/jacobcvt12/RcppParallelExample
