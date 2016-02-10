@@ -99,7 +99,7 @@ Rcpp::List normal_gibbs(arma::vec data, double mu0, double t20, double nu0, doub
             s2 = arma::conv_to<double>::from(arma::randg(1, arma::distr_param(nu_n / 2., 2. / (nu_n *s2_n))));
         }
 
-        // burnin
+        // sample from stationary distribution
         for (int s = 0; s < iter; ++s) {
             // update mu
             double mu_n = (mu0 / t20 + n * data_mean * (1. / s2)) / (1. / t20 + n * (1 / s2));
