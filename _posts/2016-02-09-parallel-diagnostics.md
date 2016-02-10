@@ -10,6 +10,8 @@ tags:
 - Rcpp
 ---
 
+![Hypothetical Multiple MCMC Chains]({{ site.url }}/assets/img/multi-chains.jpg)
+
 Many Bayesian diagnostics require multiple chains to assess convergence. A common estimator is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. This method assesses convergence by parameter and method of estiamtion (Gibbs, Metropolis-Hastings, etc) does not matter.
 
 # Convergence Criteria
