@@ -2,7 +2,12 @@
 layout: post
 title:  "Parallel Rcpp for MCMC diagnostics"
 date:   2016-02-09 17:32:47 -0500
-categories: Parallel, Gibbs Sampling, Computing, Diagnostics, Rcpp
+tags:
+- Parallel
+- Gibbs Sampling
+- Computing
+- Diagnostics
+- Rcpp
 ---
 
 Many Bayesian diagnostics require multiple chains to assess convergence. A common estimator is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. This method assesses convergence by parameter and method of estiamtion (Gibbs, Metropolis-Hastings, etc) does not matter.
