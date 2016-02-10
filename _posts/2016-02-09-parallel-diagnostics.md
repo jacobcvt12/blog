@@ -52,6 +52,8 @@ gelman.rubin <- function(param) {
 
 Check out the [Parallel Example package][RcppParallel] for implementation details.
 
+# References
+
 {% bibliography --cited %}
 
 [RcppParallel]: https://github.com/jacobcvt12/RcppParallelExample
