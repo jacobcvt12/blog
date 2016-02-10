@@ -63,7 +63,7 @@ Check out the [Parallel Example package][RcppParallel] for implementation detail
 
 # Parallel Chains
 
-Since this diagnostic requires multiple chains, a typical solution is to run the chains in parallel. Since sampling MCMC is computationally intensive, we typically write sampler in compiled language. Here I use C++ in combination with the Rcpp library for the compiled language and Open-MP for parallelization.
+Since this diagnostic requires multiple chains, a typical solution is to run the chains in parallel. Since sampling MCMC is computationally intensive, we typically write sampler in compiled language. Here I use C++ in combination with the Rcpp {% cite eddelbuettel2011 %} library for the compiled language and Open-MP for parallelization.
 
 # References
 
