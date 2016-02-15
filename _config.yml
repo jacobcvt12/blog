@@ -7,7 +7,7 @@ author: Jacob Carey
 description: A blog about Bayesian statistics with an emphasis on computational challenges
 
 url: "http://jacobcvt12.gitub.io" # the base hostname & protocol for your site
-baseurl: "/Chaplin" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: jcarey12
 github_username:  jacobcvt12
 
@@ -24,14 +24,13 @@ short_bio: >
 profile_picture: http://img3.rnkr-static.com/list_img/11570/111570/C300/movies-and-films-directed-by-charlie-chaplin-u4.jpg
 
 google_analytics: true
-tracking_id: # Your google analytics tracking id
+tracking_id: UA-73774891-1
 
 # Build settings | Do not edit anything below this
 markdown: kramdown
 
 gems:
   - jekyll-paginate
-  - jekyll-scholar
 
 sass:
   style:            compressed
