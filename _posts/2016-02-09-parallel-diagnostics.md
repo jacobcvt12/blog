@@ -59,7 +59,7 @@ gelman.rubin <- function(param) {
 }
 {% endhighlight %}
 
-A parameter is usually considered converged when the Gelman-Rubin statistic is $$<1$$. If your parameter has not converged, this can usually be fixed by increasing the number of burnin iterations.
+A parameter is usually considered converged when the Gelman-Rubin statistic is $$<1.1$$. If your parameter has not converged, this can usually be fixed by increasing the number of burnin iterations.
 
 Check out the [Parallel Example package][RcppParallel] for implementation details.
 
