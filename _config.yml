@@ -8,7 +8,6 @@ description: A blog about Bayesian statistics with an emphasis on computational 
 
 url: "http://jacobcvt12.gitub.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
-twitter_username: jcarey12
 github_username:  jacobcvt12
 
 permalink:          /:year/:title.html
