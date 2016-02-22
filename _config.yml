@@ -1,35 +1,41 @@
-# User Settings | Edit these according to your site
-
+# Blog info
 title: Statistical Computing for Bayesian Inference and Forecasting
 email: jacobcvt12@gmail.com
 author: Jacob Carey
-
 description: A blog about Bayesian statistics with an emphasis on computational challenges
 
+# blog and github path
 url: "http://jacobcvt12.gitub.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
 github_username:  jacobcvt12
 
 permalink:          /:year/:title.html
 
+# paginate settings
 paginate: 4
 paginate_path: "/page/:num"
+
+# enable disqus comments
 comments: true
 
+# prettify header and footer
 heading_font: Ubuntu 
 about_footer: true
 profile_picture: /assets/img/jacobcarey.jpeg
 
+# google analytics settings
 google_analytics: true
 tracking_id: UA-73774891-1
 
-# Build settings | Do not edit anything below this
+# markdown setting
 markdown: kramdown
 
+# which gyms to use
 gems:
   - jekyll-paginate
   - jekyll/scholar
 
+# sass settings
 sass:
   style:            compressed
   sass_dir:         _sass
