@@ -34,9 +34,13 @@ timing.data <- timing.data %>%
            expr.char=as.character(expr),
            chains=substr(expr.char, nchar(expr.char)-1, 
                          nchar(expr.char)-1)) %>%
-    select(-expr, -expr.char)
+    select(-expr, -expr.char) %>%
+    group_by(chains, `length(y)`) %>%
+    filter(abs(time - median(time)) < 2 * sd(time)) %>%
+    ungroup()
 
 ggplot(timing.data, aes(x=chains, y=time)) +
-    geom_violin() +
-    facet_wrap(~`length(y)`, scales="free_y") +
+    geom_violin(aes(colour=chains), draw_quantiles=0.5) +
+    facet_wrap(~`length(y)`) +
+    guides(colour=FALSE) +
     theme_classic()
