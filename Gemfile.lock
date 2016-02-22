@@ -54,7 +54,6 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll-scholar
-  jekyll-watch
   rouge
 
 BUNDLED WITH
