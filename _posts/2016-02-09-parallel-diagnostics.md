@@ -126,6 +126,8 @@ Rcpp::List normal_gibbs(arma::vec data, double mu0, double t20, double nu0, doub
 
 {% endhighlight %}
 
+![Multiple MCMC Chains Timings](/assets/img/multi-chains-timings.jpg)
+
 # References
 
 {% bibliography --cited %}
