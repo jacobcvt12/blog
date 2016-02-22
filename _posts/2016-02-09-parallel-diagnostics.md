@@ -10,7 +10,7 @@ tags:
 - Rcpp
 ---
 
-![Hypothetical Multiple MCMC Chains]({{ site.url }}/assets/img/multi-chains.jpg)
+![Hypothetical Multiple MCMC Chains](/assets/img/multi-chains.jpg)
 
 Many Bayesian diagnostics require multiple chains to assess convergence. A common estimator is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. This method assesses convergence by parameter and method of estiamtion (Gibbs, Metropolis-Hastings, etc) does not matter.
 
@@ -67,7 +67,7 @@ Check out the [Parallel Example package][RcppParallel] for implementation detail
 
 Since this diagnostic requires multiple chains, a typical solution is to run the chains in parallel. Since sampling MCMC is computationally intensive, we typically write sampler in compiled language. Here I use C++ in combination with the Rcpp {% cite eddelbuettel2011 %} library for the compiled language and Open-MP for parallelization.
 
-{% highlight C++ linenos %}
+{% highlight C++ %}
 #include <RcppArmadillo.h>
 #include <cmath>
 #include <omp.h>
