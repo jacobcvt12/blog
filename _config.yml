@@ -34,6 +34,11 @@ markdown: kramdown
 gems:
   - jekyll-paginate
   - jekyll/scholar
+  - jekyll/tagging
+
+# tagging settings
+tag_page_layout: tag_page
+tag_page_dir: tag
 
 # sass settings
 sass:
