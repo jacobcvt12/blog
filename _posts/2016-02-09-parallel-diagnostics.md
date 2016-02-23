@@ -160,15 +160,15 @@ PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
 PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
 {% endhighlight %}
 
-There are 4 key differences between this code and single-threaded gibbs sampler
+There are 4 key differences between this code and a single-threaded Gibbs sampler
 
 1) The use of `#include <omp.h>`
 
-2) The preprocessor statement `#pragma omp parallel for num_threads(chains)` before `for` loop around the chains. This preprocessor command is what indicates parallelization. Note that the number of threads can (and is in this case) be a variable. Additionally, all variables in the scope above the preprocessor command are *shared* amongst the threads unless otherwise specified.
+2) The preprocessor statement `#pragma omp parallel for num_threads(chains)` before the `for` loop around the chains. This preprocessor command is what indicates parallelization. The number of threads can (and is in this case) be a variable. Additionally, all variables in the scope above the preprocessor command are *shared* amongst the threads unless otherwise specified.
 
-3) All code used for the Gibbs Sampler (the multi-threaded portion) **must** be from a thread-safe library, such as the C++ STL or armadillo. The standard `Rcpp` types are not thread-safe, and may not be used.
+3) All variables used for the Gibbs Sampler (the multi-threaded portion) **must** be from a thread-safe library, such as the C++ STL or armadillo. The standard `Rcpp` types are not thread-safe, and may not be used.
 
-4) The compiler must be made aware of openmp by a flag. These instructions are passed to the compiler via the commands in `src/Makevars`
+4) The compiler must be made aware of open-MP by a flag. These instructions are passed to the compiler via the commands in `src/Makevars`
 
 Some caveats: not every compiler supports openmp. For example, the default `clang` compiler on OS X will not compile the above code. An alternative is to use `gcc` via [homebrew][homebrew-site] installed with the command `brew install gcc --without-multilib`. On most linux distributions, `gcc` should compile C++ with open-MP without additional configuration.
 
