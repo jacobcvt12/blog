@@ -32,6 +32,9 @@ timing.data <- as.data.frame(time) %>%
 timing.data <- timing.data %>%
     mutate(time=time/1e6, # time in milliseconds
            expr.char=as.character(expr),
+           `length(y)`=factor(`length(y)`, 
+                              levels=c("1,000", "10,000",
+                                       "100,000", "1,000,000")),
            chains=substr(expr.char, nchar(expr.char)-1, 
                          nchar(expr.char)-1)) %>%
     select(-expr, -expr.char) %>%
