@@ -24,7 +24,7 @@ time <- microbenchmark(
     normal.gibbs(data, chains=4)
 )
 timing.data <- as.data.frame(time) %>%
-    mutate(`length(y)`=as.character(n)) %>%
+    mutate(`length(y)`=formatC(n, format="d", big.mark=",")) %>%
     bind_rows(timing.data)
 }
 )
