@@ -20,7 +20,9 @@ One of the key challenges here is that MCMC simulations must be run iteratively,
 
 There are several diagnostics for quantifying convergence, but the most commonly used one is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. 
 
-For a given parameter, we calulate the variance by parameter (MCMC iteration *i* and chain *j*).
+Convergence is assessed by parameter (parameter $\theta$ may have converged, but $\mu$ may not have). Here *i* indicates the MCMC iteration, and *j* indicates the chain number. 
+
+First, the variance of a single chain of a parameter is calculated
 
 $$s_j^2 = \frac{1}{n-1}\sum_i^n(\theta_{ij}-\bar{\theta}_j)^2$$
 
@@ -33,8 +35,6 @@ The between chain variance is calculated as
 $$B=\frac{m}{n-1}\sum_1^m (\bar{\theta}_j-\bar{\bar{\theta}})^2$$
 
 where $$\bar{\bar{\theta}}=\frac{1}{m}\sum_i^m \bar{\theta}_j$$
-
-Or more simply is the "mean of means."
 
 For a univariate parameter, it is appropriate to use a matrix to handle multple MCMC chains of samples from the stationary distribution. Consider the columns to be individual chains and the rows to represent MCMC samples. The following is an R function to calculate the Gelman-Rubin diagnostic of a parameter stored in such a fashion.
 
