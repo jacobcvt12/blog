@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Parallel Rcpp for MCMC diagnostics"
-date:   2016-02-09 17:32:47 -0500
+date:   2016-02-23 15:27:47 -0500
 comments: true
 tags:
 - Parallel
