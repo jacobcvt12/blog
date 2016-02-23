@@ -132,8 +132,7 @@ To investigate performance of parallel chains using open-MP, I simulated data fr
 
 While there is some overhead with adding an additional thread, going from 1 to 2 chains and 3 to 4 chains is mostly negligible. A more computationally intensive model would demonstrate the time savings of using open-MP for parallel chains even further.
 
-For an additional example of open-MP for parallel MCMC chains see [this Mixture Model package][RcppMixtureModel]
-Check out the [Parallel Example package][RcppParallel] for implementation details.
+For an additional example of open-MP for parallel MCMC chains see [this Mixture Model package][RcppMixtureModel].
 
 # References
 
