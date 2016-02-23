@@ -12,9 +12,13 @@ tags:
 
 ![Hypothetical Multiple MCMC Chains](/assets/img/multi-chains.jpg)
 
-Many Bayesian diagnostics require multiple chains to assess convergence. A common estimator is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. This method assesses convergence by parameter and method of estiamtion (Gibbs, Metropolis-Hastings, etc) does not matter.
+A common question in Bayesian statistics and Markov Chain Monte Carlo is the concept of convergence. When approximating parameters by MCMC, we expect the chains to converge to the *stationary distributions*. Visual inspection of a traceplot of values of a MCMC can suggest convergence. A more robust solution is to use *multiple chains*. The idea here is that if multiple chains appear to have arrived at the same distribution, then we can be more certain of convergence. 
+
+One of the key challenges here is that MCMC simulations must be run iteratively, and are often computationally intensive. Even if you use a compiled language for your sampler, running two or three chains sequentially will double or triple what may already be a lengthy process. In this post, I show how to use open-MP for *parallelizing* MCMC simulations. After doing so, the same code with 2-3 chains will likely only take slightly longer than one chain.
 
 # Convergence Criteria
+
+There are several diagnostics for quantifying convergence, but the most commonly used one is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. 
 
 For a given parameter, we calulate the variance by parameter (MCMC iteration *i* and chain *j*).
 
