@@ -126,10 +126,18 @@ Rcpp::List normal_gibbs(arma::vec data, double mu0, double t20, double nu0, doub
 
 {% endhighlight %}
 
+To investigate performance of parallel chains using open-MP, I simulated data from a normal distribution with 1,000, 10,000, 100,000, and 1,000,000 observations and benchmarked the above code with 1,000 iterations and 1,000 burnins. Below is a density plot of the timings (in milliseconds) by chain number as well as number of observations in the simulated data.
+
 ![Multiple MCMC Chains Timings](/assets/img/multi-chains-timings.jpg)
+
+While there is some overhead with adding an additional thread, going from 1 to 2 chains and 3 to 4 chains is mostly negligible. A more computationally intensive model would demonstrate the time savings of using open-MP for parallel chains even further.
+
+For an additional example of open-MP for parallel MCMC chains see [this Mixture Model package][RcppMixtureModel]
+Check out the [Parallel Example package][RcppParallel] for implementation details.
 
 # References
 
 {% bibliography --cited %}
 
 [RcppParallel]: https://github.com/jacobcvt12/RcppParallelExample
+[RcppMixtureModel]: https://github.com/jacobcvt12/RcppMixtureModel
