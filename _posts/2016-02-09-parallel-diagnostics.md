@@ -133,6 +133,8 @@ PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
 PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
 {% endhighlight %}
 
+Some caveats: not every compiler supports openmp. For example, the default `clang` compiler on OS X will not compile the above code. An alternative, is to install `gcc` via [homebrew][homebrew-site], using the command `brew install gcc --without-multilib`. `gcc` on most linux distributions should compile C++ with open-MP without additional configuration.
+
 # Results
 
 To investigate performance of parallel chains using open-MP, I simulated data from a normal distribution with 1,000, 10,000, 100,000, and 1,000,000 observations and benchmarked the above code with 1,000 iterations and 1,000 burnins. Below is a density plot of the timings (in milliseconds) by chain number as well as number of observations in the simulated data.
@@ -149,3 +151,4 @@ For an additional example of open-MP for parallel MCMC chains see [this Mixture 
 
 [RcppParallel]: https://github.com/jacobcvt12/RcppParallelExample
 [RcppMixtureModel]: https://github.com/jacobcvt12/RcppMixtureModel
+[homebrew-site]: http://brew.sh
