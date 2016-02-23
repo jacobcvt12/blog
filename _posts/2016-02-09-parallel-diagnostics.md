@@ -20,7 +20,7 @@ One of the key challenges here is that MCMC simulations must be run iteratively,
 
 There are several diagnostics for quantifying convergence, but the most commonly used one is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. 
 
-Convergence is assessed by parameter (parameter $\theta$ may have converged, but $\mu$ may not have). Here *i* indicates the MCMC iteration, and *j* indicates the chain number. 
+Convergence is assessed by parameter (parameter $\theta$ may have converged, but $\mu$ may not have). Here *i* indicates the MCMC iteration, and *j* indicates the chain number. Note that the *burn-in* portion of a MCMC simulation is not included in the calculation of this diagnostic.
 
 First, the variance of a single chain of a parameter is calculated
 
