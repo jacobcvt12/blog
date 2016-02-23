@@ -11,13 +11,19 @@ tags:
 - Rcpp
 ---
 
-![Hypothetical Multiple MCMC Chains]({{ site.url }}/assets/img/multi-chains.jpg)
+![Hypothetical Multiple MCMC Chains](/assets/img/multi-chains.jpg)
 
-Many Bayesian diagnostics require multiple chains to assess convergence. A common estimator is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. This method assesses convergence by parameter and method of estiamtion (Gibbs, Metropolis-Hastings, etc) does not matter.
+A common question in Bayesian statistics and Markov Chain Monte Carlo is the concept of convergence. When approximating parameters by MCMC, we expect the chains to converge to the *stationary distributions*. Visual inspection of a traceplot of values of a MCMC can suggest convergence. A more robust solution is to use *multiple chains*. The idea here is that if multiple chains appear to have arrived at the same distribution, then we can be more certain of convergence. 
+
+One of the key challenges here is that MCMC simulations must be run iteratively, and are often computationally intensive. Even if you use a compiled language for your sampler, running two or three chains sequentially will double or triple what may already be a lengthy process. In this post, I show how to use open-MP for *parallelizing* MCMC simulations. After doing so, the same code with 2-3 chains will likely only take slightly longer than one chain.
 
 # Convergence Criteria
 
-For a given parameter, we calulate the variance by parameter (MCMC iteration *i* and chain *j*).
+There are several diagnostics for quantifying convergence, but the most commonly used one is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. 
+
+Convergence is assessed by parameter (parameter $\theta$ may have converged, but $\mu$ may not have). Here *i* indicates the MCMC iteration, and *j* indicates the chain number. Note that the *burn-in* portion of a MCMC simulation is not included in the calculation of this diagnostic.
+
+First, the variance of a single chain of a parameter is calculated
 
 $$s_j^2 = \frac{1}{n-1}\sum_i^n(\theta_{ij}-\bar{\theta}_j)^2$$
 
@@ -30,8 +36,6 @@ The between chain variance is calculated as
 $$B=\frac{m}{n-1}\sum_1^m (\bar{\theta}_j-\bar{\bar{\theta}})^2$$
 
 where $$\bar{\bar{\theta}}=\frac{1}{m}\sum_i^m \bar{\theta}_j$$
-
-Or more simply is the "mean of means."
 
 For a univariate parameter, it is appropriate to use a matrix to handle multple MCMC chains of samples from the stationary distribution. Consider the columns to be individual chains and the rows to represent MCMC samples. The following is an R function to calculate the Gelman-Rubin diagnostic of a parameter stored in such a fashion.
 
@@ -66,9 +70,26 @@ Check out the [Parallel Example package][RcppParallel] for implementation detail
 
 # Parallel Chains
 
+Below is C++ code for approximating the mean and variance of a normal distribution. This approximation is performed by Gibbs Sampler with the following full conditionals
+
+
+$$\begin{align}
+\mu_* &\sim \text{N}(\mu_n, t^2_n) \\ 
+s^2_* &\sim \text{IG}\left(\frac{\nu_n}{2}, \frac{\nu_n s^2_n}{2}\right) 
+\end{align}$$
+
+where
+
+$$\begin{align}
+\mu_n & = \frac{\mu_0 / t^2_0 + n \bar{y} (1 / s^2)}{1 / t^2_0 + n (1 / s^2)} \\
+t^2_n & = \frac{1}{1 / t^2_0 + n / s^2} \\
+nu_n & = nu_0 + n \\
+s^2_n & = \frac{\nu_0 s^2_0 + (n-1) \text{Var}(y) + n (\bar{y}-\mu)^2}{\nu_n}
+\end{align}$$
+
 Since this diagnostic requires multiple chains, a typical solution is to run the chains in parallel. Since sampling MCMC is computationally intensive, we typically write sampler in compiled language. Here I use C++ in combination with the Rcpp {% cite eddelbuettel2011 %} library for the compiled language and Open-MP for parallelization.
 
-{% highlight C++ linenos %}
+{% highlight C++ %}
 #include <RcppArmadillo.h>
 #include <cmath>
 #include <omp.h>
@@ -127,8 +148,29 @@ Rcpp::List normal_gibbs(arma::vec data, double mu0, double t20, double nu0, doub
 
 {% endhighlight %}
 
+To add the openmp flag to the compiler, add the following two lines to your `src/Makevars` file
+
+{% highlight Make %}
+PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
+PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
+{% endhighlight %}
+
+Some caveats: not every compiler supports openmp. For example, the default `clang` compiler on OS X will not compile the above code. An alternative is to use `gcc` via [homebrew][homebrew-site] installed with the command `brew install gcc --without-multilib`. On most linux distributions, `gcc` should compile C++ with open-MP without additional configuration.
+
+# Results
+
+To investigate performance of parallel chains using open-MP, I simulated data from a normal distribution with 1,000, 10,000, 100,000, and 1,000,000 observations and benchmarked the above code with 1,000 iterations and 1,000 burnins. Below is a density plot of the timings (in milliseconds) by chain number as well as number of observations in the simulated data.
+
+![Multiple MCMC Chains Timings](/assets/img/multi-chains-timings.jpg)
+
+While there is some overhead with adding an additional thread, going from 1 to 2 chains and 3 to 4 chains is mostly negligible. A more computationally intensive model would demonstrate the time savings of using open-MP for parallel chains even further.
+
+For an additional example of open-MP for parallel MCMC chains see [this Mixture Model package][RcppMixtureModel].
+
 # References
 
 {% bibliography --cited %}
 
 [RcppParallel]: https://github.com/jacobcvt12/RcppParallelExample
+[RcppMixtureModel]: https://github.com/jacobcvt12/RcppMixtureModel
+[homebrew-site]: http://brew.sh

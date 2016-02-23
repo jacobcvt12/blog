@@ -1,22 +1,56 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
+# Blog info
 title: Statistical Computing for Bayesian Inference and Forecasting
 email: jacobcvt12@gmail.com
+author: Jacob Carey
 description: A blog about Bayesian statistics with an emphasis on computational challenges
+
+# blog and github path
+url: "http://jacobcvt12.gitub.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://jacobcvt12.github.io" # the base hostname & protocol for your site
 github_username:  jacobcvt12
 
-# gems
-gems:
-    - jekyll/scholar
+permalink:          /:year/:title.html
 
-# Build settings
+# paginate settings
+paginate: 4
+paginate_path: "/page/:num"
+
+# enable disqus comments
+comments: true
+
+# prettify header and footer
+heading_font: Ubuntu 
+about_footer: true
+profile_picture: /assets/img/jacobcarey.jpeg
+
+# google analytics settings
+google_analytics: true
+tracking_id: UA-73774891-1
+
+# markdown setting
 markdown: kramdown
-highlighter: rouge
+
+# which gyms to use
+gems:
+  - jekyll-paginate
+  - jekyll/scholar
+
+# sass settings
+sass:
+  style:            compressed
+  sass_dir:         _sass
+
+# Scopes
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
