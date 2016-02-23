@@ -76,8 +76,7 @@ Check out the [Parallel Example package][RcppParallel] for implementation detail
 
 # Parallel Chains
 
-Below is C++ code for approximating the mean and variance of a normal distribution. This approximation is performed by Gibbs Sampler with the following full conditionals
-
+Below is C++ code for approximating the mean and variance of a normal distribution. This approximation is performed by a Gibbs Sampler with the following full conditionals
 
 $$\begin{align}
 \mu_* &\sim \text{N}(\mu_n, t^2_n) \\ 
@@ -93,7 +92,7 @@ nu_n & = nu_0 + n \\
 s^2_n & = \frac{\nu_0 s^2_0 + (n-1) \text{Var}(y) + n (\bar{y}-\mu)^2}{\nu_n}
 \end{align}$$
 
-Since this diagnostic requires multiple chains, a typical solution is to run the chains in parallel. Since sampling MCMC is computationally intensive, we typically write sampler in compiled language. Here I use C++ in combination with the Rcpp {% cite eddelbuettel2011 %} library for the compiled language and Open-MP for parallelization.
+This sampler is implemented in C++ via Rcpp {% cite eddelbuettel2011 %} and parallelized using open-MP.
 
 {% highlight C++ %}
 #include <RcppArmadillo.h>
