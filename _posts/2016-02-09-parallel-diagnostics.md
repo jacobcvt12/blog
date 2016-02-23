@@ -19,15 +19,15 @@ One of the key challenges with multiple chains is that MCMC simulations are ofte
 
 # Convergence Criteria
 
-There are several diagnostics for quantifying convergence, but the most commonly used one is the Gelman-Rubin diagnostic {% cite gelman1992 %}. Note that this diagnostic requires that the parameter in question must be *approximately normal*. 
+There are several diagnostics for quantifying convergence, but the Gelman-Rubin diagnostic {% cite gelman1992 %} is most commonly used. The Gelman-Rubin diagnostic requires that the parameter in question must be *approximately normal*.
 
-Convergence is assessed by parameter (one parameter may have converged, but a second parameter may not have). Here *i* indicates the MCMC iteration, and *j* indicates the chain number. Note that the *burn-in* portion of a MCMC simulation is not included in the calculation of this diagnostic.
+Convergence is assessed by parameter (one parameter may have converged, but a second parameter may not have). Here *i* indicates the MCMC iteration, and *j* indicates the chain number. Note that the *burn-in* portion of a MCMC simulation is not included in the calculation of this diagnostic. The Gelman-Rubin diagnostic is calculated as follows.
 
-First, the variance of a single chain of a parameter is calculated
+First, the variance of each chain of a parameter is calculated
 
 $$s_j^2 = \frac{1}{n-1}\sum_i^n(\theta_{ij}-\bar{\theta}_j)^2$$
 
-The within chain variance is simply the mean of these variances or
+Next, the within chain variance is calculated by taking the mean of these variances
 
 $$W=\frac{1}{m}\sum_i^m s_j^2$$
 
@@ -37,7 +37,13 @@ $$B=\frac{m}{n-1}\sum_1^m (\bar{\theta}_j-\bar{\bar{\theta}})^2$$
 
 where $$\bar{\bar{\theta}}=\frac{1}{m}\sum_i^m \bar{\theta}_j$$
 
-For a univariate parameter, it is appropriate to use a matrix to handle multple MCMC chains of samples from the stationary distribution. Consider the columns to be individual chains and the rows to represent MCMC samples. The following is an R function to calculate the Gelman-Rubin diagnostic of a parameter stored in such a fashion.
+Finally, the variance of the stationary distribution is
+
+$$\left(1-\frac{1}{n}\right)W + \frac{1}{n} B$$
+
+And the Gelman-Rubin diagnostic is just the square root of this value divided by the within chain variance.
+
+For a univariate parameter, it is appropriate to use a matrix to handle multiple MCMC chains of samples from the stationary distribution. Consider the columns to be individual chains and the rows to represent MCMC samples. The following is an R function to calculate the Gelman-Rubin diagnostic of a parameter stored in such a fashion.
 
 {% highlight R %}
 gelman.rubin <- function(param) {
