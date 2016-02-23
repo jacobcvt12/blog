@@ -126,6 +126,13 @@ Rcpp::List normal_gibbs(arma::vec data, double mu0, double t20, double nu0, doub
 
 {% endhighlight %}
 
+To add the openmp flag to the compiler, add the following two lines to your `src/Makevars` file
+
+{% highlight Make %}
+PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
+PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
+{% endhighlight %}
+
 To investigate performance of parallel chains using open-MP, I simulated data from a normal distribution with 1,000, 10,000, 100,000, and 1,000,000 observations and benchmarked the above code with 1,000 iterations and 1,000 burnins. Below is a density plot of the timings (in milliseconds) by chain number as well as number of observations in the simulated data.
 
 ![Multiple MCMC Chains Timings](/assets/img/multi-chains-timings.jpg)
