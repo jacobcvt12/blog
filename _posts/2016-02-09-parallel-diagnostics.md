@@ -133,7 +133,7 @@ PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
 PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) -fopenmp
 {% endhighlight %}
 
-Some caveats: not every compiler supports openmp. For example, the default `clang` compiler on OS X will not compile the above code. An alternative, is to install `gcc` via [homebrew][homebrew-site], using the command `brew install gcc --without-multilib`. `gcc` on most linux distributions should compile C++ with open-MP without additional configuration.
+Some caveats: not every compiler supports openmp. For example, the default `clang` compiler on OS X will not compile the above code. An alternative is to use `gcc` via [homebrew][homebrew-site] installed with the command `brew install gcc --without-multilib`. On most linux distributions, `gcc` should compile C++ with open-MP without additional configuration.
 
 # Results
 
