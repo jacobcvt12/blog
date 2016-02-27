@@ -22,7 +22,7 @@ data <- rbind(data.frame(iter=iter, theta=chain.1, chain="1"),
               data.frame(iter=iter, theta=chain.3, chain="3"))
 
 # plot data
-jpeg("../img/multi-chains.jpg")
+svg("../img/multi-chains.svg", width=5, height=5)
 ggplot(data, aes(x=iter, y=theta)) +
     geom_line(aes(colour=chain, linetype=chain)) +
     xlab("") +

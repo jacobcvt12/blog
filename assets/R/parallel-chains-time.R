@@ -42,7 +42,7 @@ timing.data <- timing.data %>%
     filter(abs(time - median(time)) < 2 * sd(time)) %>%
     ungroup()
 
-jpeg("../img/multi-chains-timings.jpg")
+svg("../img/multi-chains-timings.svg", width=5, height=5)
 ggplot(timing.data, aes(x=chains, y=time)) +
     geom_violin(aes(colour=chains), draw_quantiles=0.5) +
     facet_wrap(~`length(y)`) +

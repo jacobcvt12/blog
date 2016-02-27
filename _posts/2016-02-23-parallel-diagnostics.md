@@ -11,7 +11,7 @@ tags:
 - Rcpp
 ---
 
-![Hypothetical Multiple MCMC Chains](/assets/img/multi-chains.jpg)
+![Hypothetical Multiple MCMC Chains](/assets/img/multi-chains.svg)
 
 A common issue in Bayesian statistics and Markov Chain Monte Carlo is the concept of convergence. When approximating parameters by MCMC, we expect the chains to converge to the *stationary distributions*. Visual inspection of a MCMC traceplot can suggest convergence, but a more robust solution is to use *multiple chains*. If multiple have arrived at the same distribution, then we can be more certain of convergence. 
 
@@ -176,7 +176,7 @@ Some caveats: not every compiler supports openmp. For example, the default `clan
 
 To investigate performance of parallel chains using open-MP, I simulated data from a normal distribution with 1,000, 10,000, 100,000, and 1,000,000 observations and benchmarked the above code with 1,000 iterations and 1,000 burnins. Below is a density plot of the timings (in milliseconds) by chain number as well as number of observations in the simulated data.
 
-![Multiple MCMC Chains Timings](/assets/img/multi-chains-timings.jpg)
+![Multiple MCMC Chains Timings](/assets/img/multi-chains-timings.svg)
 
 While there is some overhead with adding an additional thread, going from 1 to 2 chains and 3 to 4 chains is mostly negligible. A more computationally intensive model would demonstrate the time savings of using open-MP for parallel chains even further.
 
