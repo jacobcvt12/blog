@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Creating Diagrams for Hierarchical Models with LaTeX"
+title:  "Creating Hierarchical Model Diagrams with LaTeX"
 date:   2016-02-26 15:27:47 -0500
 comments: true
 tags:
