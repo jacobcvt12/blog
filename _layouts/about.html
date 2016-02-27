@@ -4,11 +4,9 @@ layout: default
 <div class="content about-container">
 	<!-- h1 class="about-title">{{ page.title }}</h1 -->
 	{% if page.profile_picture %}
-		<img class="profile-picture" src="{{ page.profile_picture }}">
-		</img>
+		<img class="profile-picture" src="{{ page.profile_picture }}" alt="Jacob Carey" />
 	{% elsif site.profile_picture %}
-		<img class="profile-picture" src="{{ site.profile_picture }}">
-		</img>
+		<img class="profile-picture" src="{{ site.profile_picture }}" alt="Jacob Carey" />
 	{% endif %}
 	<hr>
 		{% if page.author %}
