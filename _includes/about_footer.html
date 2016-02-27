@@ -3,11 +3,9 @@
 <section class="about-footer">
 	<div class="container about-footer-div">
 		{% if page.profile_picture %}
-			<img class="profile-picture" src="{{ page.profile_picture }}">
-			</img>
+			<img class="profile-picture" src="{{ page.profile_picture }}" alt="Jacob Carey" />
 		{% elsif site.profile_picture %}
-			<img class="profile-picture" src="{{ site.profile_picture }}">
-			</img>
+			<img class="profile-picture" src="{{ site.profile_picture }}"alt="Jacob Carey" />
 		{% endif %}
 		{% if page.author %}
 			{% if page.author_site %}
