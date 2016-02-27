@@ -8,4 +8,4 @@ tags:
 - Hierarchical Models
 ---
 
-![Simple Example](/assets/tex/hg.svg)
+![Simple Example](/assets/img/hierarchical-graph.svg)
