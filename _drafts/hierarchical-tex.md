@@ -8,6 +8,12 @@ tags:
 - Hierarchical Models
 ---
 
+Bayesian models are often considered in a hierarchical fashion. Even when there is no multilevel structure to the data, the model can still be implicitly hierarchical due to the relationship of hyperparameters, parameters of interest, and data.
+
+For a simple hierarchical Bayesian model, the structure can be written as a series of random variables and the distributions which they follow. 
+
+# Ti*k*Z and diagrams for hierarchical models
+
 Simple example with numbers
 {% highlight TeX %}
 \matrix[matrix of nodes] (mat)
@@ -60,3 +66,7 @@ Final (simple model)
 {% endhighlight %}
 
 ![Include arrows and names](/assets/img/hierarchical-graph.svg)
+
+# References
+
+{% bibliography --cited %}
