@@ -39,7 +39,6 @@ Final (simple model)
 {% highlight TeX %}
 \matrix[matrix of math nodes, column sep=30 pt, row sep=30 pt] (mat)
 {
-    % & separates nodes and \\ begins new lines
     & \mu, \tau^2 & \\ 
     \theta_1 & \ldots & \theta_n \\
     y_{1,1}, \ldots, y_{n_1, 1} & \ldots & y_{1, J}, 
