@@ -19,7 +19,8 @@
     % & separates nodes and \\ begins new lines
     & \mu, \tau^2 & \\ 
     \theta_1 & \ldots & \theta_n \\
-    y_1 & \ldots & y_n \\
+    y_{1,1}, \ldots, y_{n_1, 1} & \ldots & y_{1, J}, 
+    \ldots, y_{n_J, J} \\
     & \sigma^2 & \\
 };
 
@@ -38,7 +39,9 @@
 % now we annotate some of the rows
 %\node specifies whether the anchoring node is to the east or west
 % xshift specifies distance away from which node
-\node[anchor=east] at ([xshift =-20pt]mat-2-1) {$\theta_i \sim \text{N}(\mu, \tau^2)$};
-\node[anchor=east] at ([xshift =-20pt]mat-3-1) {$y_i \sim \text{N}(\theta_i, \sigma^2)$};
+\node[anchor=east] at ([xshift =-40pt]mat-2-1) 
+{$\theta_j \sim \text{N}(\mu, \tau^2)$};
+\node[anchor=east] at ([xshift =-40pt]mat-3-1) 
+{$y_{i, j} \sim \text{N}(\theta_j, \sigma^2)$};
 \end{tikzpicture}
 \end{document}
