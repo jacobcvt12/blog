@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{matrix}
+\begin{document}
+
+\begin{tikzpicture}
+\matrix[matrix of math nodes, column sep=2em, row sep=2em] (mat)
+{
+    & \mu, \tau^2 & \\
+    \theta_1 & \ldots & \theta_n \\
+    y_1 & \ldots & y_n \\
+    & \sigma^2 & \\
+};
+\end{tikzpicture}
+\end{document}
