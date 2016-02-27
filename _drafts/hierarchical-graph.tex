@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+\begin{document}
+
+% load matrix from tikz
+\usetikzlibrary{matrix}
+
+% write model within tikzpicture
+\begin{tikzpicture}
+% start matrix
+% arg list
+% 1. specifies matrix of "math" nodes so that you can type math for nodes
+% 2. space between columns
+% 3. space between rows
+% (mat) is our name for the matrix and we use the name to reference nodes
+\matrix[matrix of math nodes, column sep=30 pt, row sep=30 pt] (mat)
+{
+    % & separates nodes and \\ begins new lines
+    & \mu, \tau^2 & \\ 
+    \theta_1 & \ldots & \theta_n \\
+    y_1 & \ldots & y_n \\
+    & \sigma^2 & \\
+};
+
+% loop over columns 1 and 3 to draw arrows more easily
+% \column is just the name of the variable to hold the values 1 and 3
+\foreach \column in {1, 3}
+{
+    % -> and <- specify direction of arrow
+    % >=latex specifies latex style for arrow head
+    % after \draw command, specify which nodes you draw from and to
+    % first number represents row of node, second is column
+    \draw[->,>=latex] (mat-1-2) -- (mat-2-\column);
+    \draw[->,>=latex] (mat-2-\column) -- (mat-3-\column);
+    \draw[<-,>=latex] (mat-3-\column) -- (mat-4-2);
+}
+% now we annotate some of the rows
+%\node specifies whether the anchoring node is to the east or west
+% xshift specifies distance away from which node
+\node[anchor=east] at ([xshift =-20pt]mat-2-1) {$\theta_i \sim \text{N}(\mu, \tau^2)$};
+\node[anchor=east] at ([xshift =-20pt]mat-3-1) {$y_i \sim \text{N}(\theta_i, \sigma^2)$};
+\end{tikzpicture}
+\end{standalone}
