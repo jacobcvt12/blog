@@ -25,7 +25,25 @@ For complicated hierarchical models, it may be more easily communicated through 
 
 A popular \\(\LaTeX\\) package for creating images and diagrams is Ti*k*Z {% cite tantau2013 %}. Ti*k*Z can be used in many different ways to create a diagram. However, some methods are more difficult than others. I have found the `matrix` library within Ti*k*Z to provide the simplest approach, with the least amount of "archane" looking code.
 
-Simple example with numbers
+The general structure of using the `matrix` library with the Ti*k*Z package is
+
+{% highlight TeX %}
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{amsmath} 
+\usetikzlibrary{matrix} % note this is in the preamble
+\begin{document}
+
+\begin{tikzpicture}
+
+% diagram here
+
+\end{tikzpicture}
+\end{document}
+{% endhighlight %}
+
+First, a very basic Ti*k*Z matrix looks like a typical linear algebra matrix. A matrix is specified using `\matrix` followed by options of the matrix and the name of the matrix (here chosen to be mat). Cells on the same row are separated by `&`'s, and new rows are begun by `\\`. Of note, if one row has more columns than the others (more `&`'s), then the other rows will have more columns implicitly added to match.
+
 {% highlight TeX %}
 \matrix[matrix of nodes] (mat)
 {
@@ -37,7 +55,9 @@ Simple example with numbers
 
 ![Just number](/assets/img/hierarchical-graph-1.svg)
 
-Now use math symbols and separate rows and columns bit
+For this matrix to look anything like a hierarchical diagram, we first need to replace the numbers with random variables and spread the columns and rows further apart. Note that we now specify this to be a `matrix of math nodes`, and specify separation of columns and rows. You may have to play with these margins, but I have found `2em` to be an appropriate size for most hierarchical diagrams.
+
+Another point to make about the Ti*k*Z matrix is that empty "cells" are allowed. As you can see below, the top row doesn't have values in the first cell (*before* the first `&`) or the last cell (*after* the second `&`). This is convenient for when wish to denote one parameter as being a higher level of hierarchy than multiple "children" in the next level of hierarchy.
 
 {% highlight TeX %}
 \matrix[matrix of math nodes, column sep=2em, row sep=2em] (mat)
