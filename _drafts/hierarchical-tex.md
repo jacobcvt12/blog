@@ -107,9 +107,9 @@ Next, the text descriptions are created via manually specified nodes. These node
 If some parameters need to be farther from others, you can adjust one column separation manually via an option to the `&`.
 
 {% highlight TeX %}
-\matrix[matrix of math nodes, column sep=30 pt, row sep=30 pt] (mat)
+\matrix[matrix of math nodes, column sep=2em, row sep=2em] (mat)
 {
-    & \mu, \tau^2 & &[60pt] \beta \\ 
+    & \mu, \tau^2 & &[4em] \beta \\ 
     \theta_1 & \ldots & \theta_n & \alpha \\
     y_{1,1}, \ldots, y_{n_1, 1} & \ldots & y_{1, J}, 
     \ldots, y_{n_J, J} \\
