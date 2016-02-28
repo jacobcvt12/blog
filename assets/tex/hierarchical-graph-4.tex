@@ -9,8 +9,7 @@
 {
     & \mu, \tau^2 & &[60pt] \beta \\ 
     \theta_1 & \ldots & \theta_n & \alpha \\
-    y_{1,1}, \ldots, y_{n_1, 1} & \ldots & y_{1, J}, 
-    \ldots, y_{n_J, J} \\
+    y_1 & \ldots & y_n \\
     & \sigma^2 & \\
 };
 
@@ -25,8 +24,8 @@
 \draw[->,>=latex] (mat-2-4) -- (mat-3-3);
 
 \node[anchor=east] at ([xshift =-40pt]mat-2-1) 
-{$\theta_j \sim \text{N}(\mu, \tau^2)$};
+{$\theta_i \sim \text{N}(\mu, \tau^2)$};
 \node[anchor=east] at ([xshift =-40pt]mat-3-1) 
-{$y_{i, j} \sim \text{N}(\theta_j + \alpha, \sigma^2)$};
+{$y_i \sim \text{N}(\theta_i + \alpha, \sigma^2)$};
 \end{tikzpicture}
 \end{document}
