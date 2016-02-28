@@ -10,9 +10,20 @@ tags:
 
 Bayesian models are often considered in a hierarchical fashion. Even when there is no multilevel structure to the data, the model can still be implicitly hierarchical due to the relationship of hyperparameters, parameters of interest, and data.
 
-For a simple hierarchical Bayesian model, the structure can be written as a series of random variables and the distributions which they follow. 
+For a simple hierarchical Bayesian model, the structure can be written as a series of random variables and the distributions which they follow. For example, the number of cases of pancreatic cancer may have been collected by county (with hypothetically standardized population sizes). A possible model with a Poisson likelihood, a Gamma prior on the mean pancreatic cases and hyperparameters *a* and *b*.
+
+$$\begin{align}
+y_i & \sim \text{Poisson}(\theta) \\
+\theta & \sim \text{Gamma}(a, b)
+\end{align}$$
+
+For complicated hierarchical models, it may be more easily communicated through a graphical diagram
+
+![Just number](/assets/img/hierarchical-comparison.svg)
 
 # Ti*k*Z and diagrams for hierarchical models
+
+A popular \\(\LaTeX\\) package for creating images and diagrams is Ti*k*Z {% cite tantau2013 %}. Ti*k*Z can be used in many different ways to create a diagram. However, some methods are more difficult than others. I have found the `matrix` library within Ti*k*Z to provide the simplest approach, with the least amount of "archane" looking code.
 
 Simple example with numbers
 {% highlight TeX %}
