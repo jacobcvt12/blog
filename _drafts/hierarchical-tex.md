@@ -104,6 +104,36 @@ Next, the text descriptions are created via manually specified nodes. These node
 
 # A few tweaks
 
+If some parameters need to be farther from others, you can adjust one column separation manually via an option to the `&`.
+
+{% highlight TeX %}
+\matrix[matrix of math nodes, column sep=30 pt, row sep=30 pt] (mat)
+{
+    & \mu, \tau^2 & &[60pt] \beta \\ 
+    \theta_1 & \ldots & \theta_n & \alpha \\
+    y_{1,1}, \ldots, y_{n_1, 1} & \ldots & y_{1, J}, 
+    \ldots, y_{n_J, J} \\
+    & \sigma^2 & \\
+};
+
+\foreach \column in {1, 3}
+{
+    \draw[->,>=latex] (mat-1-2) -- (mat-2-\column);
+    \draw[->,>=latex] (mat-2-\column) -- (mat-3-\column);
+    \draw[<-,>=latex] (mat-3-\column) -- (mat-4-2);
+}
+
+\draw[->,>=latex] (mat-1-4) -- (mat-2-4);
+\draw[->,>=latex] (mat-2-4) -- (mat-3-3);
+
+\node[anchor=east] at ([xshift =-40pt]mat-2-1) 
+{$\theta_j \sim \text{N}(\mu, \tau^2)$};
+\node[anchor=east] at ([xshift =-40pt]mat-3-1) 
+{$y_{i, j} \sim \text{N}(\theta_j + \alpha, \sigma^2)$};
+{% endhighlight %}
+
+![Different Spacing](/assets/img/hierarchical-graph-4.svg)
+
 # Some pitfalls
 
 # References
