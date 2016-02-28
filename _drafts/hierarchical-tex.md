@@ -134,6 +134,8 @@ If some parameters need to be farther from others, you can adjust one column sep
 
 ![Different Spacing](/assets/img/hierarchical-graph-4.svg)
 
+Additionally, it may be useful to include rectangular boxes around observed values, circles around unobserved values, and different colors of important parameters.
+
 # Some pitfalls
 
 # References
