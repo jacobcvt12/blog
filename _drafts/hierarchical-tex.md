@@ -17,7 +17,7 @@ y_i & \sim \text{Poisson}(\theta) \\
 \theta & \sim \text{Gamma}(a, b)
 \end{align}$$
 
-For complicated hierarchical models, it may be more easily communicated through a graphical diagram
+For complicated hierarchical models, it may be more easily communicated through a graphical diagram instead of - or in addition to - the description above.
 
 ![Just number](/assets/img/hierarchical-comparison.svg)
 
