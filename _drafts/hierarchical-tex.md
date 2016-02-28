@@ -100,7 +100,7 @@ Next, the text descriptions are created via manually specified nodes. These node
 {$y_{i, j} \sim \text{N}(\theta_j, \sigma^2)$};
 {% endhighlight %}
 
-![Include arrows and names](/assets/img/hierarchical-graph.svg)
+![Include arrows and names](/assets/img/hierarchical-graph-3.svg)
 
 # A few tweaks
 
