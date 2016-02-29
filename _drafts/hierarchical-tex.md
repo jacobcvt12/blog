@@ -136,6 +136,8 @@ If some parameters need to be farther from others, you can adjust one column sep
 
 Additionally, it may be useful to include rectangular boxes around observed values, circles around unobserved values, and different colors of important parameters.
 
+![Boxes and Colors](/assets/img/hierarchical-graph-5.svg)
+
 # Some pitfalls
 
 # References
