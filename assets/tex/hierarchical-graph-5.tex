@@ -4,9 +4,12 @@
 \usetikzlibrary{matrix}
 \begin{document}
 
-\begin{tikzpicture}
+\begin{tikzpicture}[>=latex]
 \matrix[matrix of math nodes, column sep=2em, row sep=2em,
-        nodes={circle, draw, minimum size=10mm}] (mat)
+        row 1 column 2/.style={nodes={circle, draw, minimum size=5mm}},
+        every odd column/.style={nodes={circle, draw, minimum size=5mm}},
+        row 4/.style={nodes={circle, draw, minimum size=5mm}}
+       ] (mat)
 {
     & \mu, \tau^2 & \\ 
     \theta_1 & \ldots & \theta_n \\
@@ -16,14 +19,10 @@
 
 \foreach \column in {1, 3}
 {
-    \draw[->,>=latex] (mat-1-2) -- (mat-2-\column);
-    \draw[->,>=latex] (mat-2-\column) -- (mat-3-\column);
-    \draw[<-,>=latex] (mat-3-\column) -- (mat-4-2);
+    \draw[->] (mat-1-2) -- (mat-2-\column);
+    \draw[->] (mat-2-\column) -- (mat-3-\column);
+    \draw[<-] (mat-3-\column) -- (mat-4-2);
 }
 
-\node[anchor=east] at ([xshift =-40pt]mat-2-1) 
-{$\theta_i \sim \text{N}(\mu, \tau^2)$};
-\node[anchor=east] at ([xshift =-40pt]mat-3-1) 
-{$y_i\sim \text{N}(\theta_i, \sigma^2)$};
 \end{tikzpicture}
 \end{document}
