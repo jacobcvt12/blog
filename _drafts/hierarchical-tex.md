@@ -161,6 +161,10 @@ Additionally, it may be useful to include rectangular boxes around observed valu
 
 # Some pitfalls
 
+Using the `matrix` library limits one to a model that has nodes structured in a martrix formart. For example, if there are four paramaters at one level , but three on another, you are stuck either having a ragged level, or have to structure your matrix to have 12 columns, with many empty nodes. For a situation like this, you may be better off using a different Ti*k*Z package.
+
+Additionally, the learning curve of creating hierarchical diagrams with \\(\LaTeX\\) is certainly higher than using a software like Adobe Illustrator. Besides the obvious benefit of \\(\LaTeX\\) being free and open source, when combined with something like `knitr` {% cite xie2015 %}, the diagrams can be created and modified in the same document that the other figures and analysis are in.
+
 # References
 
 {% bibliography --cited %}
