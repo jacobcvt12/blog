@@ -104,7 +104,7 @@ Next, the text descriptions are created via manually specified nodes. These node
 
 # A few tweaks
 
-If some parameters need to be farther from others, you can adjust one column separation manually via an option to the `&`.
+If some parameters need to be farther from others, you can adjust one column separation manually via an option to the `&`. Furthermore, you may want to highlight important parameters with a color.
 
 {% highlight TeX %}
 \matrix[matrix of math nodes, column sep=2em, row sep=2em] (mat)
@@ -113,7 +113,7 @@ If some parameters need to be farther from others, you can adjust one column sep
     \theta_1 & \ldots & \theta_n & \alpha \\
     y_{1,1}, \ldots, y_{n_1, 1} & \ldots & y_{1, J}, 
     \ldots, y_{n_J, J} \\
-    & \sigma^2 & \\
+    & |[blue]| \sigma^2 & \\
 };
 
 \foreach \column in {1, 3}
@@ -133,31 +133,6 @@ If some parameters need to be farther from others, you can adjust one column sep
 {% endhighlight %}
 
 ![Different Spacing](/assets/img/hierarchical-graph-4.svg)
-
-Additionally, it may be useful to include rectangular boxes around observed values, circles around unobserved values, and different colors of important parameters.
-
-{% highlight TeX %}
-\matrix[matrix of math nodes, column sep=2em, row sep=2em,
-        row 1 column 2/.style={nodes={circle, draw, minimum size=5mm}},
-        every odd column/.style={nodes={circle, draw, minimum size=5mm}},
-        row 4/.style={nodes={circle, draw, minimum size=5mm}}
-       ] (mat)
-{
-    & \mu, \tau^2 & \\ 
-    \theta_1 & \ldots & \theta_n \\
-    y_1 & \ldots & y_n \\ 
-    & |[blue]| \sigma^2 & \\
-};
-
-\foreach \column in {1, 3}
-{
-    \draw[->] (mat-1-2) -- (mat-2-\column);
-    \draw[->] (mat-2-\column) -- (mat-3-\column);
-    \draw[<-] (mat-3-\column) -- (mat-4-2);
-}
-{% endhighlight %}
-
-![Boxes and Colors](/assets/img/hierarchical-graph-5.svg)
 
 # Some pitfalls
 
