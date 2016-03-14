@@ -17,13 +17,15 @@ y_i & \sim \text{Poisson}(\theta) \\
 \theta & \sim \text{Gamma}(a, b)
 \end{align}$$
 
-Sometimes it is easier to communicate a model through a diagram, instead of a through random variables. In particular, multiple levels of hierarchy can be more simply understood in this manner. 
+Sometimes it is easier to communicate a model through a diagram, instead of through random variables. Models with multiple levels of hierarchy can become unwieldy to describe through a series of random variables, whereas the relationships between data and parameters is much clearer and interpretable through a diagram. 
+
+In this post, I describe how to create a diagram for a hierarchical model using \\(\LaTeX\\). Within the \\(\LaTeX\\) library Ti*k*Z {% cite tantau2013 %} there are several packages for creating graphics, however, I have found the `matrix` package to be the most concise and easiest to learn. Below is a diagram for the model described created using Ti*k*Z and \\(\LaTeX\\).
 
 ![Just number](/assets/img/hierarchical-comparison.svg)
 
 # Ti*k*Z and diagrams for hierarchical models
 
-A popular \\(\LaTeX\\) package for creating images and diagrams is Ti*k*Z {% cite tantau2013 %}. Ti*k*Z can be used in many different ways to create a diagram. However, some methods are more difficult than others. I have found the `matrix` library within Ti*k*Z to provide the simplest approach, with the least amount of "archane" looking code.
+A popular \\(\LaTeX\\) package for creating images and diagrams is Ti*k*Z. Ti*k*Z can be used in many different ways to create a diagram. However, some methods are more difficult than others. I have found the `matrix` library within Ti*k*Z to provide the simplest approach, with the least amount of "archane" looking code.
 
 The general structure of using the `matrix` library with the Ti*k*Z package is
 
