@@ -10,7 +10,7 @@ tags:
 
 Bayesian models are often considered in a hierarchical fashion. Even when there is no multilevel structure to the data, the model can still be implicitly hierarchical due to the relationship of hyperparameters, parameters of interest, and data. The complicated structure of hierarchical models can be difficult to communicate to an audience using only random variable notation. A graphical *diagram* can be a helpful tool instead of or in addition to such notation. In this post, I show how to create diagrams for such hierarchical models.
 
-For a simple hierarchical Bayesian model, the structure can be written as a series of likelihoods, random variables, and the distributions which they follow. For example, the number of cases of pancreatic cancer may have been collected by county (with hypothetically standardized population sizes). A simple model for learning about this data could use a Poisson likelihood and a Gamma prior on the mean cancer cases with parameters *a* and *b*.
+For a simple hierarchical Bayesian model, the structure can be described by a series of likelihoods, random variables, and the distributions which they follow. For example, the number of cases of pancreatic cancer may have been collected by county (with hypothetically standardized population sizes). A simple model for learning about this data could use a Poisson likelihood and a Gamma prior on the mean cancer cases with parameters *a* and *b*.
 
 $$\begin{align}
 y_i & \sim \text{Poisson}(\theta) \\
@@ -42,7 +42,9 @@ The necessary preamble and code for creating a Ti*k*Z graphic is
 \end{document}
 {% endhighlight %}
 
-To first begin building a diagram, note that a Ti*k*Z matrix should be thought of in terms of a linear algebra matrix. This matrix diagram is specified using `\matrix` followed by options of the matrix and the name of the matrix (here chosen to be `mat`). Cells on the same row are separated by `&`'s, and new rows are begun by `\\`. If one row has more columns than the others (more `&`'s), the other rows will have columns implicitly added to maintain a rectangular shape.
+To replicate the diagrams below, paste the code above the diagram into the section commented `% diagram here`.
+
+To begin building a diagram, note that a Ti*k*Z matrix should be thought of in terms of a linear algebra matrix. This matrix diagram is specified using `\matrix` followed by options of the matrix and the name of the matrix (here chosen to be `mat`). Cells on the same row are separated by `&`'s, and new rows are begun by `\\`. If one row has more columns than the others (more `&`'s), the other rows will have columns implicitly added to maintain a rectangular shape.
 
 {% highlight TeX %}
 \matrix[matrix of nodes] (mat)
@@ -55,9 +57,9 @@ To first begin building a diagram, note that a Ti*k*Z matrix should be thought o
 
 ![Just number](/assets/img/hierarchical-graph-1.svg)
 
-For this matrix to look anything like a hierarchical diagram, we first need to replace the numbers with random variables and specify an option to spread the columns and rows further apart. To use `math mode` for the nodes, we now specify the matrix to be a `matrix of math nodes`, and pass an option for separation of columns and rows. You may have to play with these margins, but I have found `20pt` to be an appropriate size for most hierarchical diagrams.
+For this matrix to look anything like a diagram of a hierarchical structure, we first need to replace the numbers with random variables and specify an option to spread the columns and rows further apart. To use `math mode` for the nodes (Ti*k*Z name for our parameters and data), we indicate the option `matrix of math nodes`. Additionally, we pass an option for separation of columns and rows. You may have to play with these distances, but I have found `20pt` to be an appropriate size for most hierarchical diagrams.
 
-Another point to make about the Ti*k*Z matrix is that empty "cells" are allowed. As you can see below, the top row doesn't have values in the first cell (*before* the first `&`) or the last cell (*after* the second `&`). This is convenient for when wish to denote one parameter as being a higher level of hierarchy with multiple "children" in the next level of hierarchy.
+Another point to make about the Ti*k*Z matrix is that empty "cells" are allowed. As you can see below, the top row doesn't have values in the first cell (*before* the first `&`) or the last cell (*after* the second `&`). This is convenient for when wish to denote one parameter as being a higher level of hierarchy with multiple "children" parameters or data points in the next level of hierarchy.
 
 {% highlight TeX %}
 \matrix[matrix of math nodes, column sep=20pt, row sep=20pt] (mat)
@@ -75,7 +77,7 @@ Finally, to make the diagram worthwhile, we need to add directional arrows betwe
 
 To add these lines and descriptions, we first construct the matrix as before. Next, the `\draw` command draws a line from one node to the next. The first option (here `->` and `<-`) specifies the direction of the arrow. I have placed the (shared) variance below the observations (\\(y_i\\)) and reversed the direction of the arrows to indicated hierarchy level. The second option listed (not required) specifies the type of arrowhead. To simplify the process, I use a `\foreach` loop to draw similar lines for columns 1 and 3.
 
-Next, the text descriptions are created via manually specified nodes. These nodes are "anchored" to already placed nodes in the diagram and placed relative to this anchor by distance and direction. Here I have chosen `-40pt` as my distance. Unfortunately, this number depends on the length of the text, and I have not found a better way for determining the distance other than through trial-and-error.
+Next, the text descriptions are created via manually specified nodes. These nodes are "anchored" to already existing nodes in the diagram and placed relative to this anchor by distance and direction. Here I have chosen `-40pt` as my distance. Unfortunately, this number depends on the length of the text, and I have not found a better way for determining the distance other than through trial-and-error.
 
 {% highlight TeX %}
 \matrix[matrix of math nodes, column sep=20pt, row sep=20pt] (mat)
