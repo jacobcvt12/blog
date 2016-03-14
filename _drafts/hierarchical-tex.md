@@ -104,7 +104,7 @@ Next, the text descriptions are created via manually specified nodes. These node
 
 # A few tweaks
 
-If some parameters need to be farther from others, you can adjust one column separation manually via an option to the `&`. Furthermore, you may want to highlight important parameters with a color.
+Sometimes, a model can be clarified by increasing the width between particular parameters or data. This can be done manually via an option to the `&`. Additionally, you may want to highlight important parameters with a color.
 
 {% highlight TeX %}
 \matrix[matrix of math nodes, column sep=20pt, row sep=20pt] (mat)
