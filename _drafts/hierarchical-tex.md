@@ -10,14 +10,14 @@ tags:
 
 Bayesian models are often considered in a hierarchical fashion. Even when there is no multilevel structure to the data, the model can still be implicitly hierarchical due to the relationship of hyperparameters, parameters of interest, and data.
 
-For a simple hierarchical Bayesian model, the structure can be written as a series of random variables and the distributions which they follow. For example, the number of cases of pancreatic cancer may have been collected by county (with hypothetically standardized population sizes). A possible model with a Poisson likelihood, a Gamma prior on the mean pancreatic cases and hyperparameters *a* and *b*.
+For a simple hierarchical Bayesian model, the structure can be written as a series of likelihoods, random variables, and the distributions which they follow. For example, the number of cases of pancreatic cancer may have been collected by county (with hypothetically standardized population sizes). A simple model for learning about this data could use a Poisson likelihood and a Gamma prior on the mean cancer cases with parameters *a* and *b*.
 
 $$\begin{align}
 y_i & \sim \text{Poisson}(\theta) \\
 \theta & \sim \text{Gamma}(a, b)
 \end{align}$$
 
-For complicated hierarchical models, it may be more easily communicated through a graphical diagram instead of - or in addition to - the description above.
+Sometimes it is easier to communicate a model through a diagram, instead of a through random variables. In particular, multiple levels of hierarchy can be more simply understood in this manner. 
 
 ![Just number](/assets/img/hierarchical-comparison.svg)
 
