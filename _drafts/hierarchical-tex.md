@@ -8,7 +8,7 @@ tags:
 - Hierarchical Models
 ---
 
-Bayesian models are often considered in a hierarchical fashion. Even when there is no multilevel structure to the data, the model can still be implicitly hierarchical due to the relationship of hyperparameters, parameters of interest, and data. However, the complicated structure of hierarchical models can be difficult to communicate to an audience. Here I show how to present these models using *diagrams*.
+Bayesian models are often considered in a hierarchical fashion. Even when there is no multilevel structure to the data, the model can still be implicitly hierarchical due to the relationship of hyperparameters, parameters of interest, and data. However, the complicated structure of hierarchical models can be difficult to communicate to an audience with just random variable notation. Here I show how to present these models using *diagrams*.
 
 For a simple hierarchical Bayesian model, the structure can be written as a series of likelihoods, random variables, and the distributions which they follow. For example, the number of cases of pancreatic cancer may have been collected by county (with hypothetically standardized population sizes). A simple model for learning about this data could use a Poisson likelihood and a Gamma prior on the mean cancer cases with parameters *a* and *b*.
 
