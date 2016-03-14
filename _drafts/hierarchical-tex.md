@@ -134,11 +134,13 @@ Sometimes, a model can be clarified by increasing the width between particular p
 
 ![Different Spacing](/assets/img/hierarchical-graph-4.svg)
 
-# Some pitfalls
+# Some pitfalls and caveats
 
-Using the `matrix` library limits one to a model that has nodes structured in a martrix formart. For example, if there are four paramaters at one level , but three on another, you are stuck either having a ragged level, or have to structure your matrix to have 12 columns, with many empty nodes. For a situation like this, you may be better off using a different Ti*k*Z package.
+Using the `matrix` library limits one to a model that has nodes structured in a martrix formart. For example, if there are four paramaters at one level, but three on another level, you will either have ragged levels (ugly!), or have to structure your matrix to have 12 columns, with many empty nodes (tedious). For a situation like this, you may be better off using a different Ti*k*Z package.
 
-Additionally, the learning curve of creating hierarchical diagrams with \\(\LaTeX\\) is certainly higher than using a software like Adobe Illustrator. Besides the obvious benefit of \\(\LaTeX\\) being free and open source, when combined with something like `knitr` {% cite xie2015 %}, the diagrams can be created and modified in the same document that the other figures and analysis are in.
+Additionally, the learning curve of creating hierarchical diagrams with \\(\LaTeX\\) is certainly higher than using a software like Adobe Illustrator. However, besides the obvious benefit of \\(\LaTeX\\) being free and open source, \\(\LaTeX\\) can be combined with `knitr` {% cite xie2015 %} where the diagrams and analysis can be managed in one document.
+
+Finally, for the sake of clarity, I have avoided using shorter syntax at points. For example, the arrowhead option `>=latex` can be given as an option to `\begin{tikzpicture}` instead of to each `\draw`. So while \\(\LaTeX\\) for these diagrams is already fairly concise, it is possible to make them even shorter!
 
 # References
 
