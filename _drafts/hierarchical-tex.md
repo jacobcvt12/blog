@@ -25,9 +25,7 @@ I have created this diagram with the \\(\LaTeX\\) library Ti*k*Z {% cite tantau2
 
 # Ti*k*Z and diagrams for hierarchical models
 
-A popular \\(\LaTeX\\) package for creating images and diagrams is Ti*k*Z. Ti*k*Z can be used in many different ways to create a diagram. However, some methods are more difficult than others. I have found the `matrix` library within Ti*k*Z to provide the simplest approach, with the least amount of "archane" looking code.
-
-The general structure of using the `matrix` library with the Ti*k*Z package is
+The necessary preamble and code for creating a Ti*k*Z graphic is
 
 {% highlight TeX %}
 \documentclass{article}
@@ -44,7 +42,7 @@ The general structure of using the `matrix` library with the Ti*k*Z package is
 \end{document}
 {% endhighlight %}
 
-First, a very basic Ti*k*Z matrix looks like a typical linear algebra matrix. A matrix is specified using `\matrix` followed by options of the matrix and the name of the matrix (here chosen to be mat). Cells on the same row are separated by `&`'s, and new rows are begun by `\\`. Of note, if one row has more columns than the others (more `&`'s), then the other rows will have more columns implicitly added to match.
+To first begin building a diagram, note that a Ti*k*Z matrix should be thought of in terms of a linear algebra matrix. This matrix diagram is specified using `\matrix` followed by options of the matrix and the name of the matrix (here chosen to be `mat`). Cells on the same row are separated by `&`'s, and new rows are begun by `\\`. If one row has more columns than the others (more `&`'s), the other rows will have columns implicitly added to maintain a rectangular shape.
 
 {% highlight TeX %}
 \matrix[matrix of nodes] (mat)
@@ -57,12 +55,12 @@ First, a very basic Ti*k*Z matrix looks like a typical linear algebra matrix. A 
 
 ![Just number](/assets/img/hierarchical-graph-1.svg)
 
-For this matrix to look anything like a hierarchical diagram, we first need to replace the numbers with random variables and spread the columns and rows further apart. Note that we now specify this to be a `matrix of math nodes`, and specify separation of columns and rows. You may have to play with these margins, but I have found `2em` to be an appropriate size for most hierarchical diagrams.
+For this matrix to look anything like a hierarchical diagram, we first need to replace the numbers with random variables and specify an option to spread the columns and rows further apart. To use `math mode` for the nodes, we now specify the matrix to be a `matrix of math nodes`, and pass an option for separation of columns and rows. You may have to play with these margins, but I have found `20pt` to be an appropriate size for most hierarchical diagrams.
 
-Another point to make about the Ti*k*Z matrix is that empty "cells" are allowed. As you can see below, the top row doesn't have values in the first cell (*before* the first `&`) or the last cell (*after* the second `&`). This is convenient for when wish to denote one parameter as being a higher level of hierarchy than multiple "children" in the next level of hierarchy.
+Another point to make about the Ti*k*Z matrix is that empty "cells" are allowed. As you can see below, the top row doesn't have values in the first cell (*before* the first `&`) or the last cell (*after* the second `&`). This is convenient for when wish to denote one parameter as being a higher level of hierarchy with multiple "children" in the next level of hierarchy.
 
 {% highlight TeX %}
-\matrix[matrix of math nodes, column sep=2em, row sep=2em] (mat)
+\matrix[matrix of math nodes, column sep=20pt, row sep=20pt] (mat)
 {
     & \mu, \tau^2 & \\
     \theta_1 & \ldots & \theta_n \\
