@@ -21,7 +21,7 @@ While the above presentation of this simple model is concise and easy to underst
 
 ![Just number](/assets/img/hierarchical-comparison.svg)
 
-I have created this diagram with the \\(\LaTeX\\) library Ti*k*Z {% cite tantau2013 %}. While there are several packages within Ti*k*Z for creating graphics, however I have found `matrix` to be the most concise and easiest to learn.
+I have created this diagram with the \\(\LaTeX\\) library Ti*k*Z {% cite tantau2013 %}. While there are several packages within Ti*k*Z for creating graphics, I have found `matrix` to be the most concise and easiest to learn.
 
 # Ti*k*Z and diagrams for hierarchical models
 
