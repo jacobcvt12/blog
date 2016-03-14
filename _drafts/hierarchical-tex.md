@@ -71,7 +71,7 @@ Another point to make about the Ti*k*Z matrix is that empty "cells" are allowed.
 
 ![Just math](/assets/img/hierarchical-graph-2.svg)
 
-Finally, to make the diagram worthwhile, Ti*k*Z `matrix`'s allow for directional arrows between the nodes and - if need be - text to the side describing a layer of the hierarchy. For this step, it is important to understand the naming of nodes. Within the matrix, each node takes a name based on the name of matrix as well as the location of the cell. This name is constructed as `named-of-matrix_row-number_col-number`. Thus, in our example above, \\(\sigma^2\\) could be referenced by `mat-4-2`.
+Finally, to make the diagram worthwhile, we need to add directional arrows between the nodes and possibly text annotation to each level. For this step, we reference nodes by name to draw arrows. Node names are based on the name of matrix as well as the location of the cell using the rule `named-of-matrix_row-number_col-number`. In our example above, \\(\sigma^2\\) could be referenced by `mat-4-2`.
 
 To add these lines and descriptions, we first construct the matrix as before. Following the construction, we draw the lines. The `\draw` command draws a line from one node to the next. The first option (here `->` and `<-`) specifies the direction of the arrow. I have placed the (shared) variance below the observations (\\(y_i\\)) and reversed the direction of the arrows to indicated hierarchy level. The section option (not required) specifies the type of arrowhead. Below I choose to use the `latex` style. To avoid writing more code, I use a `\foreach` loop to draw similar lines for columns 1 and 3.
 
