@@ -78,7 +78,7 @@ To add these lines and descriptions, we first construct the matrix as before. Fo
 Next, the text descriptions are created via manually specified nodes. These nodes are "anchored" to already placed nodes in the diagram and placed relative to the specified nodes. The nodes are created by specifying the direction of the anchor and distance from the anchor. Here I have chosen `-40pt` as my distance. Unfortunately, this number depends on the length of the description, and I have not found a better way for determining it other than through trial-and-error.
 
 {% highlight TeX %}
-\matrix[matrix of math nodes, column sep=2em, row sep=2em] (mat)
+\matrix[matrix of math nodes, column sep=20pt, row sep=20pt] (mat)
 {
     & \mu, \tau^2 & \\ 
     \theta_1 & \ldots & \theta_n \\
@@ -107,7 +107,7 @@ Next, the text descriptions are created via manually specified nodes. These node
 If some parameters need to be farther from others, you can adjust one column separation manually via an option to the `&`. Furthermore, you may want to highlight important parameters with a color.
 
 {% highlight TeX %}
-\matrix[matrix of math nodes, column sep=2em, row sep=2em] (mat)
+\matrix[matrix of math nodes, column sep=20pt, row sep=20pt] (mat)
 {
     & \mu, \tau^2 & &[4em] \beta \\ 
     \theta_1 & \ldots & \theta_n & \alpha \\
