@@ -187,6 +187,7 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-press
   jekyll-scholar
+  jekyll-sitemap
   jekyll-tagging
 
 BUNDLED WITH
