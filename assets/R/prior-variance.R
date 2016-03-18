@@ -29,6 +29,7 @@ data <- bind_rows(data_frame(y=y.ij[[1]],
     mutate(n=factor(n, levels=n.j))
 
 library(ggplot2)
+svg("../img/variance-sim-1.svg", width=5, height=5)
 ggplot(data, aes(y)) +
     geom_density(aes(colour=n)) +
     geom_rug(aes(x=mu)) +
@@ -36,3 +37,4 @@ ggplot(data, aes(y)) +
     ylab("") +
     guides(colour=FALSE) +
     theme_classic()
+dev.off()
