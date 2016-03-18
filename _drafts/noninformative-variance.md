@@ -9,6 +9,8 @@ tags:
 - Priors
 ---
 
+In his highly cited paper, Gelman {% cite gelman2006 -A %} writes about group level variance approximation by gibbs sampler. It is noted that for a simple hierarchical model such as
+
 # Simulation
 
 ![Simple Simulation](/assets/img/variance-sim-1.svg)
