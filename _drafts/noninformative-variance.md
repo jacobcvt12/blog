@@ -29,6 +29,8 @@ In the two simulated data sources, I examine group sizes of 3, 10, and 25. The a
 
 ![Simple Simulation](/assets/img/variance-sim-1.svg)
 
+Here I simulated with \\(\mu=15\\), \\(\sigma_y^2=1\\), \\(\sigma_{\alpha}^2=20\\).
+
 # Priors
 
 # Analysis and Comparison
