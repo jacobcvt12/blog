@@ -26,6 +26,8 @@ In the two simulated data sources, I examine group sizes of 3, 10, and 25. The a
 
 # Priors
 
+![Priors](/assets/img/variance-prior.svg)
+
 # Simulation
 
 ![Simple Simulation](/assets/img/variance-sim-1.svg)
