@@ -29,6 +29,10 @@ In the two simulated data sources, I examine group sizes of 3, 10, and 25. The a
 
 ![Simple Simulation](/assets/img/variance-sim-1.svg)
 
+# Priors
+
+# Analysis and Comparison
+
 # References
 
 {% bibliography --cited %}
