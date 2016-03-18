@@ -24,14 +24,13 @@ There is generally enough data for the prior on \\(\sigma_y^2\\) to not matter f
 
 In the two simulated data sources, I examine group sizes of 3, 10, and 25. The analysis is conducted using JAGS {% cite plummer2003 %}. For the simulation data, the truth is known. Model fit in 3. is compared via DIC {% cite spiegelhalter2002 %}.
 
+# Priors
 
 # Simulation
 
 ![Simple Simulation](/assets/img/variance-sim-1.svg)
 
 Here I simulated with \\(\mu=15\\), \\(\sigma_y^2=1\\), \\(\sigma_{\alpha}^2=20\\).
-
-# Priors
 
 # Analysis and Comparison
 
