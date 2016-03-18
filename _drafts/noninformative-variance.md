@@ -9,6 +9,10 @@ tags:
 - Priors
 ---
 
+# Simulation
+
+![Simple Simulation](/assets/img/variance-sim-1.svg)
+
 # References
 
 {% bibliography --cited %}
