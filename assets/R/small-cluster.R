@@ -23,7 +23,7 @@ big <- which(! g %in% small)
 
 # run simulation
 set.seed(42)
-iter <- 1000
+iter <- 2000
 
 # allocate memory for tracking estimates by simulation
 est.all <- numeric(iter)
@@ -97,9 +97,10 @@ ggplot(data, aes(x=value)) +
     geom_density(aes(colour=parameter,
                      linetype=data)) +
     geom_vline(data=data.truth, aes(xintercept=value), 
-                linetype=2) +
+                linetype=2, colour="grey") +
     guides(colour=FALSE, linetype=FALSE) +
-    facet_grid(parameter ~ data, scales="free") +
+    facet_wrap(parameter ~ data, scales="free", nrow=3) +
     xlab("") +
     ylab("") +
+    ggtitle(paste("Random Effects Slope with", iter, "Simulations")) +
     theme_classic()
